@@ -75,14 +75,15 @@ int main()
 		int y, num;
 		double pr;
 		cout << "Enter title: ";
-		cin >> t;
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		getline(cin, t);
 		cout << "Enter author: ";
-		cin >> a;
+		getline(cin, a);
 		cout << "Enter year: ";
 		cin >> y;
 		cout << "Enter number of stocks: ";
 		cin >> num;
-		cout << "Enter price per stock: ";
+		cout << "Enter price per stock(lv.): ";
 		cin >> pr;
 
 		Book* book = new Book(t, a, y, num, pr);
@@ -102,7 +103,7 @@ int main()
 		totalStocks += books[i]->getPrice();
 	}
 	totalStocks = totalStocks+totalStocks*0.09;
-	cout << "Total price including 9% tax: " << totalStocks << endl;
+	cout << "Total price including 9% tax: " << totalStocks << " lv." << endl;
 
 	// Display books published in 2020
 	for(int i = 0; i < n; i++)
